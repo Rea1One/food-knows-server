@@ -1,0 +1,1 @@
+外层的Request和Response为接口的泛型类，可以参考使用。

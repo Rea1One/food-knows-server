@@ -11,7 +11,7 @@ public class StepsController {
     private StepsService stepsService;
 
     @RequestMapping(value="/steps", method= RequestMethod.POST)
-    public Response postHistory(@RequestBody Request<Steps> request) {
+    public Response postSteps(@RequestBody Request<Steps> request) {
         boolean isSuccess = stepsService.saveSteps(request.getOpenId(), request.getReqParam());
         String message;
         if (isSuccess == true) {
@@ -24,7 +24,7 @@ public class StepsController {
     }
 
     @RequestMapping(value="/steps/daily",method = RequestMethod.GET)
-    public Response getHistory(@RequestBody Request<Steps> request) {
+    public Response getSteps(@RequestBody Request<Steps> request) {
         Steps steps=stepsService.findSteps(request.getOpenId());
         boolean isSuccess = steps != null ? true : false;
         String message;

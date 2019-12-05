@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -32,10 +33,34 @@ public class FoodControllerTest {
     public void postHistory() throws Exception {
         RequestBuilder request = null;
 
-        // 测试/history的get
+        // 测试/food的post
         request = post("/food")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"openId\":\"aaa\",\"reqParam\":{\"name\":\"test\",\"calories\":100,\"weight\":1,\"time\":1574226411000}}");
+                .content("{\"openId\":\"aaa\",\"reqParam\":{\"name\":\"test2\",\"calories\":150,\"weight\":2,\"time\":1574307193000}}");
+        mockMvc.perform(request)
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void getRatio() throws Exception {
+        RequestBuilder request = null;
+
+        // 测试/food/ratio的get
+        request = get("/food/ratio")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"openId\":\"aaa\",\"reqParam\":{\"time\":1574226411000}}");
+        mockMvc.perform(request)
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void getDaily() throws Exception {
+        RequestBuilder request = null;
+
+        // 测试/food/ratio的get
+        request = get("/food/daily")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"openId\":\"aaa\",\"reqParam\":{\"startTime\":1574226411000,\"endTime\":1574307193000}}");
         mockMvc.perform(request)
                 .andExpect(status().isOk());
     }

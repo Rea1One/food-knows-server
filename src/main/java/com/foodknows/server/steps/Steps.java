@@ -18,7 +18,7 @@ public class Steps {
 
     public Steps(){}
 
-    public Steps(String openId,Timestamp time,Timestamp startTime,Timestamp endTime,int steps){
+    public Steps(String openId,Timestamp time,int steps){
         this.openId=openId;
         this.time=time;
         this.steps=steps;

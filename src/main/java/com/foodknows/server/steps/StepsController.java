@@ -30,7 +30,7 @@ public class StepsController {
 
 
     @RequestMapping(value="/daily",method = RequestMethod.GET)
-    public Response getSteps(@RequestBody Request <Map <String, Timestamp>> request) {
+    public Response<Map <String, Timestamp>> getSteps(@RequestBody Request <Map <String, Timestamp>> request) {
         List<DailySteps> resData=stepsService.getDaily(request.getOpenId(), request.getReqParam().get("startTime"), request.getReqParam().get("endTime"));
         boolean isSuccess;
         String message;

@@ -12,14 +12,9 @@ public class StepsService {
     private StepsRepo stepsRepo;
 
     boolean saveSteps(String openId, Steps steps) {
-        if (openId != null && steps != null) {
-            steps.setOpenId(openId);
-            if (steps.getTime() != null && steps.getSteps() != 0) {
-                stepsRepo.save(steps);
-                return true;
-            }
-        }
-        return false;
+        steps.setOpenId(openId);
+        stepsRepo.save(steps);
+        return true;
     }
 
     List <DailySteps> getDaily(String openId, Timestamp startTime, Timestamp endTime) {
